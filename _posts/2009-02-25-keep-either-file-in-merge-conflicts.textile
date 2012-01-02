@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Beide Dateien in einem Merge-Konflikt behalten
+title: Eine von beiden Dateien in einem Merge-Konflikt behalten
 category: advanced
 published: true
 ---
