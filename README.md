@@ -36,7 +36,6 @@ git commit -am "Unpublishing all the posts"
 * Übersetze die Kopf- und Fußzeilen der Startseite. Schau dir die anderen übersetzen Seiten als Beispiele an, wie die [deutsche Seite](http://de.gitready.com).
 * Übersetze so wenige oder so viele Beiträge, wie du möchtest.
 * Lade deine Arbeit hoch (push) und vergiß nicht den richtigen Zweig zu verwenden!:
-* Push your work back up (remember to use the right branch name!):
 
 <pre>
 git push origin en
