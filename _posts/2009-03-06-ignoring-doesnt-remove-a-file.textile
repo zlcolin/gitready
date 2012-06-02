@@ -1,20 +1,20 @@
 ---
 layout: post
-title: ignoring doesn't remove a file
+title: Ignorieren entfernt keine Datei
 category: beginner
-published: false
+published: true
 ---
 
-One problem I see quite often in the #git channel on Freenode is that beginners get confused as to why a file doesn't disappear from history when they place it into their ".gitignore":http://gitready.com/beginner/2009/01/19/ignoring-files.html file. The answer to this is quite simple! When you tell Git to ignore files, it's going to *only* stop watching changes for that file, and nothing else. This means that the history will still remember the file and have it.
+Im #git Channel auf Freenode sehe ich häufig verwirrte Anfänger mit der Frage, warum eine Datei nicht aus ihrer Historie verschwindet, wenn sie sie in ihre ".gitignore":http://de.gitready.com/beginner/2009/01/19/ignoring-files.html Datei einfügen. Die Antwort darauf ist ziemlich einfach! Wenn Git eine Datei ignoriert, werden *nur* Änderungen an dieser Datei nicht mehr beobachtet und nichts weiter. Das bedeutet, dass die Historie die Datei beibehalten wird, sofern sich die Datei bereits im Repository befindet.
 
-If you want to remove a file from the repository, but keep it in your working directory, simply use:
+Wenn du eine Datei aus dem Repository löschen, aber im Arbeitsverzeichnis behalten möchtest, verwende einfach:
 
 @git rm --cached <file>@
 
-However, this will still keep the file in history. If you actually want to remove it from history, you really have two options: rewrite your repository's commits, or start over. Both options really suck, and that's for a good reason: Git tries hard not to lose your data. Just like with "rebasing":http://gitready.com/intermediate/2009/01/31/intro-to-rebase.html, Git forces you to think about these kinds of options since they are destructive operations.
+Dieser Befehl behält die Datei aber immer noch in der Historie. Wenn du die Datei tatsächlich aus der History löschen möchtest, hast du zwei Optionen: Deine Repository-Commits neu schreiben oder komplett von vorne beginnen. Beide Optionen sind wirklich Mist und das aus gutem Grund: Git versucht wirklich hart, keine Daten zu verlieren. Wie beim "Rebasing":http://de.gitready.com/intermediate/2009/01/31/intro-to-rebase.html zwingt dich Git dazu, über diese Optionen nachzudenken, weil es zerstörerische Operationen sind.
 
-If you did actually want to remove a file from history, @git filter-branch@ is the hacksaw you're looking for. Definitely read up on its "manpage":http://www.kernel.org/pub/software/scm/git/docs/git-filter-branch.html before using it, since it will literally rewrite your project's commits. This actually is a great tool for some actions, and can do all sorts of stuff like totally removing an author's commits to moving the project root folder around. The command to remove a file from all revisions is:
+Wenn du tatsächlich eine Datei aus deiner Historie löschen möchtest, ist @git filter-branch@ die Bügelsäge, nach der du suchst. Schau vor der Verwendung des Befehls besser noch in die "Manpage":http://www.kernel.org/pub/software/scm/git/docs/git-filter-branch.html, weil er buchstäblich die Commits deine Projekts neu schreibt. Für einige Aktionen ist der Befehl ein großartiges Werkzeug, das eine ganze Reihe Zeugs beherrscht wie beispielsweise vom kompletten Löschen eines Commit eines Autors bis hin zum Umbewegen des Hauptverzeichnisses des Projektes. Der Befehl zum Löschen einer Datei aus allen Revisionen lautet:
 
 @git filter-branch --index-filter 'git rm --cached <file>' HEAD@
 
-This action can definitely be useful when you need to blow out sensitive or confidential information that may have been placed in your repository. More tips in the future will cover some of the other neat things @filter-branch@ can do. If you know of any useful tips regarding it, let us know in the comments or "submit a tip!":http://gitready.com/submit.html
+Diese Aktion kann durchaus sehr nützlich sein, wenn du empfindliche oder vertrauliche Informationen ausschwärzen möchtest, die in deinem Repository zu finden sind. Weitere zukünftige Tips werden andere nützliche Dinge von @filter-branch@ behandeln. Wenn du andere nützliche Tips kennst, teile sie uns in den Kommentaren mit oder "übermittle einen Tip!":/submit.html
