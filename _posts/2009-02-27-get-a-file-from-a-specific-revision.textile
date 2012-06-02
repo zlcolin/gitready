@@ -1,20 +1,20 @@
 ---
 layout: post
-title: get a file from a specific revision
+title: Eine Datei aus eine bestimmten Revision laden
 category: intermediate
-published: false
+published: true
 ---
 
-If you know how Git stores data through "blobs, trees, and commits":http://gitready.com/beginner/2009/02/17/how-git-stores-your-data.html hopefully it should make sense why it's a bit annoying to get a file from a specific revision out of your repository. What you want is inside of a blob from whichever commit, so simply saying I want to see this commit won't cut it. Now, you could reset the working directory back to the commit you want to see then look at the file, but that's lame. 
+Wenn du weißt, wie Git Daten durch "Blobs, Bäume und Commits":http://de.gitready.com/beginner/2009/02/17/how-git-stores-your-data.html speichert, macht es hoffentlich Sinn, warum es ein wenig ärgerlich ist, eine bestimmte Revision einer Datei aus deinem Repository zu holen. Was du haben möchtest, befindet sich in einem Blob in irgendeinem Commit. Einfach den Commit anzusehen, wird es also nicht bringen. Du könntest dein Arbeitsverzeichnis zu dem gewünschten Commit zurück setzen und dann in den Datei schauen, aber das ist lahm.
 
-Enter @git show@, which is an awesome tool for this job. This command is quite versatile and deserves several tips on what it can do, but let's stick to the task at hand: we want to pull a file's contents out from a specific revision. Usually the command would be done like so:
+Wir schauen uns @git show@ an, ein großartiges Werkzeug für diese Aufgabe. Dieser Befehl ist ziemlich vielseitig und verdient verschiedene Tips zu seinem Können. Wir konzentrieren uns aber zunächst auf die greifbare Aufgabe: Wir möchten den Inhalt einer Datei aus einer bestimmten Revision ziehen. Gewöhnlich würde der Befehl ungefähr so aussehen:
 
 @git show <treeish>:<file>@
 
-So let's say we want to go back four commits from our current HEAD, and we want the index.html file.
+Nehmen wir also an, wir möchten vier Commits von unserem aktuellen HEAD zurück gehen und wir möchten die Datei index.html ansehen.
 
 @git show HEAD~4:index.html@
 
-You could of course pass any valid "treeish":http://book.git-scm.com/4_git_treeishes.html into the command. It will accept the actual SHA1 of the blob as well, but that's pretty unlikely for most use cases. Probably the best use of this command is to see what the file looked like and perhaps write its contents out to a new file (or replace the old one!) if so desired.
+Natürlich könntest du jeden gültigen "treeish":http://book.git-scm.com/4_git_treeishes.html an den Befehl übergeben. Er wird auch den tatsächlichen SHA1 des Blobs akzeptieren, aber das ist ziemlich unwahrscheinlich für die meisten Anwendungsfälle. Die wahrscheinlich beste Verwendung des Befehls ist zu sehen, wie die Datei aussah, und vielleicht wird ihr Inhalt in eine neue Datei geschrieben (oder die alte Datei ersetzt!), wenn das gewünscht ist.
 
-Check out some of the other uses of this command at its "manpage":http://www.kernel.org/pub/software/scm/git/docs/git-show.html, and of course if you have other useful hints with it, let us know by "submitting a tip!":/submit.html
+Weitere Verwendungsmöglichkeiten dieses Befehls findest du in der "Manpage":http://www.kernel.org/pub/software/scm/git/docs/git-show.html. Und falls du andere nützliche Tips hast, teile sie uns mit und "sende uns einen Tip!":/submit.html
