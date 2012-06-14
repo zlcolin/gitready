@@ -1,13 +1,13 @@
 ---
 layout: post
-title: easily manage git remote branches
+title: Entfernte Branches einfach verwalten
 category: advanced
-published: false
+published: true
 ---
 
-"Checking out remote branches":http://gitready.com/intermediate/2009/01/09/checkout-remote-tracked-branch.html, "deleting them":http://gitready.com/beginner/2009/02/02/push-and-delete-branches.html, and publishing new ones is part of most Git users' daily workflow. But seriously, who wants to type *that* much? I certainly don't, and you shouldn't have to either.
+"Entfernte Branches auschecken":http://de.gitready.com/intermediate/2009/01/09/checkout-remote-tracked-branch.html, "sie löschen":http://de.gitready.com/beginner/2009/02/02/push-and-delete-branches.html und neue veröffentlichen ist Teil der gewöhnlichen Arbeitsweise der meisten Git-Anwender. Aber ernsthaft, wer möchte schon *so* viel tippen? Ich sicherlich nicht, und das solltest du auch nicht müssen.
 
-Enter "git_remote_branch":http://grb.rubyforge.org/, a helpful "RubyGem":http://rubygems.org for just this task. It installs a new executable to help take some of the chore of working with remotes away. Here are some of the commands it has:
+Schau dir nur für diese Aufgabe "git_remote_branch":http://grb.rubyforge.org/ näher an, ein nützlicher "RubyGem":http://rubygems.org. Es wird eine neue ausführbare Datei installiert, die bei einigen täglichen Aufgaben mit entfernten Branches hilft. Hier sind einige Befehle, die enthalten sind:
 
 <pre>
 grb create branch_name [origin_server]
@@ -21,14 +21,14 @@ grb delete branch_name [origin_server]
 grb track branch_name [origin_server]
 </pre>
 
-What's awesome about it is that it shows what Git commands are running underneath it, so it's quite easy to figure out exactly what's going on.
+Was ist daran so großartig? Beim Ausführen werden die darunter liegenden Git-Befehle angezeigt. So ist es ziemlich einfach, herauszufinden, was geschieht.
 
 p=. !/images/grb1.png!
 
-It also has an @explain@ command built in that dumps out the commands directly.
+Es gibt sogar einen eingebauten @explain@ (Erklär-) Befehl, der die Befehle direkt ausgibt.
 
 p=. !/images/grb2.png!
 
-Provided you have "RubyGems installed":http://rubyforge.org/frs/?group_id=126, simply do @gem install git_remote_branch@ and you're set! Check out the code on "GitHub":http://github.com/webmat/git_remote_branch/tree if you have ideas on how to make it better (or want to write your own helpful commands based off of it!)
+Vorausgesetzt "RubyGems ist installiert":http://rubyforge.org/frs/?group_id=126, kannst du einfach @gem install git_remote_branch@ ausführen und bist fertig. Schau in den Code auf "GitHub":http://github.com/webmat/git_remote_branch/tree, wenn du Ideen zur Verbesserung hast (oder du möchtest deine eigenen nützlichen Befehle auf dieser Grundlage schreiben!)
 
-If you know of other helpful shortcuts that can help out Git users, "submit a tip!":http://gitready.com/submit.html
+Wenn du andere hilfreiche Abkürzungen kennst, die Git-Benutzern helfen können, "schicke uns einen Tip!":http://de.gitready.com/submit.html
