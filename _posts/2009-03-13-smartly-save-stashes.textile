@@ -1,11 +1,11 @@
 ---
 layout: post
-title: smartly save stashes
+title: Zwischenschritte als Stashes clever speichern
 category: beginner
-published: false
+published: true
 ---
 
-I seem to be using "stashing":http://gitready.com/beginner/2009/01/10/stashing-your-changes.html more and more, and I've found that seeing the stash list output looking like this isn't very helpful:
+Ich verwende zunehmend "Stashes":http://de.gitready.com/beginner/2009/01/10/stashing-your-changes.html und finde, dass die Ausgabe der Stash-Liste wie folgt meistens nicht sehr nützlich ist:
 
 <pre>
 $ git stash list
@@ -14,13 +14,13 @@ stash@{1}: WIP on master: b50788b... First pass...
 stash@{2}: WIP on shoulda: e783fb0... Upgrading the rest...
 </pre>
 
-Sure, it's got the commit SHA and message that your work was based off of, but if you're anything like me, you forgot what you worked on the moment you stashed the changes and opened up that dreaded bug ticket that took hours to finish.
+Nun, sie enthält den Commit-Hash und die Beschreibung, auf dem die Arbeit aufbaut. Aber wenn du nur ein kleines bißchen ähnlich tickst wie ich, dann hast du in dem Moment, wo du deinen Arbeitsfortschritt im Stash verstaust und diesen nervigen Bug über Stunden bearbeitest, vergessen, woran du gearbeitest hast.
 
-Instead, stashing like this is a lot better when you're trying to figure out what you actually threw in there:
+Stattdessen ist das zwischenzeitliche Verstauen der gegenwärtigen Arbeit auf die folgende Art sehr viel besser, wenn du dich wieder einarbeitest und tatsächlich herausfinden möchtest, wo du warst:
 
 @git stash save "your message here"@
 
-Now, your stashes will look a lot cleaner and hopefully help you save some time when pulling information out of there.
+Jetzt sehen die Stash-Listen ein ganzes Stück sauberer aus. Hoffentlich spart dir das etwas Zeit, anhand der Informationen wieder in die Arbeit hinein zu finden.
 
 <pre>
 $ git stash list
@@ -29,7 +29,7 @@ stash@{1}: On master: started merge but need to fix #104 first
 stash@{2}: On feature1: Adding some stuff
 </pre>
 
-If you need to see what's been changed for a certain stash, you can simply pass in the treeish for the stash, given in the @git stash list@ output. The <code>stash@{<number>}</code> part shows you how to reference that changeset. Simply pass it into @git diff@ to figure out what was changed:
+Wenn du sehen möchtest, was in einem bestimmten Stash geändert wurde, kannst du einfach den Treeish der Stash-Ausgabe von @git stash list@ weitergeben. Der Teil <code>stash@{<Nummer>}</code> zeigt, wie der Änderungssatz referenziert wird. Einfach an @git diff@ übergeben und du siehst, was geändert wurde:
 
 <pre>
 $ git diff stash@{0}
@@ -46,4 +46,4 @@ index b0ecaeb..4ca398c 100644
 \ No newline at end of file
 </pre>
 
-You could also use @git show@ to see the commit it was based off of as well. If you've got more stash related tips or others that you can think of, "let us know!":http://gitready.com/submit.html
+Du könntest auch @git show@ verwenden, um zu sehen, worauf der Commit basiert. Wenn du weitere Stash-bezogene oder andere Tips hast, "lass es uns wissen!":http://gitready.com/submit.html
