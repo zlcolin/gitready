@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Die staging area
+title: Der Staging Bereich
 category: beginner
 published: true
 translated: true
