@@ -1,41 +1,41 @@
 ---
 layout: post
-title: restoring a directory from history
+title: Ein Verzeichnis aus der Historie wiederherstellen
 category: intermediate
-published: false
+published: true
 ---
 
-It's quite easy to "revert":http://gitready.com/intermediate/2009/03/16/rolling-back-changes-with-revert.html or "reset":http://gitready.com/beginner/2009/01/11/reverting-files.html a single file from history, but what about pulling an entire directory out of the history?
+Es ist ziemlich einfach eine einzelne Datei aus der Historie "zurückzurollen":http://de.gitready.com/intermediate/2009/03/16/rolling-back-changes-with-revert.html oder "wiederherzustellen":http://de.gitready.com/beginner/2009/01/11/reverting-files.html. Aber wie wird ein gesamtes Verzeichnis aus der Historie wiederhergestellt?
 
 p=. "!/images/stump.png!":http://www.flickr.com/photos/stevejaysbestshots/1402673467/
 
-The solution is simple: 
+Die Lösung ist einfach:
 
 @git checkout <treeish> -- /path/to/dir@
 
-That will bring back the directory from the given "treeish" for the @/path/to/dir@. Let's go through an example of this:
+Dieser Befehl wird das Verzeichnis @/path/to/dir@ aus dem angegebenen "treeish" wiederherstellen. Wir gehen durch ein entsprechendes Beispiel:
 
-First off, let's remove a directory and then merge in a ton of changes (for future reference, this is going off a refactoring branch of "Jekyll":http://github.com/qrush/jekyll, the static blog engine that generates this site).
+Zunächst entfernen wir ein Verzeichnis und führen dann eine ganze Menge von Änderungen zusammen (zur künftigen Referenz, das Beispiel stammt aus einem Refactoring-Zweig von "Jekyll":http://github.com/qrush/jekyll, die statische Blog-Engine für diese Seite).
 
 p=. !/images/checkout1.png!
 
-Here's how the history looks:
+Die Historie sieht dann so aus:
 
 p=. !/images/checkout2.png!
 
-Hopefully this isn't too confusing. Basically the commit we just made is pretty far down in history, which most likely will be the case you're in if you need to restory a directory. First off, we need to get the reference to the commit that has the directory you want to pull. In this case, we know the last commit was the merge and the commit before that we deleted the directory. So, the commit we want to reference is the third commit in history, or @HEAD~2@. You could also reference this by the branch name (@test~2@) or even go one back from the SHA of the deletion (@f46666d^@). 
+Das ist hoffentlich nicht zu verwirrend. Der Commit von eben ist vom Prinzip her ziemlich weit unten in der Historie und das entspricht meistens auch der Realität, wenn ein Verzeichnis wiederhergestellt werden soll. Als Erstes benötigen wir die Referenz des Commits, der das gewünschte Verzeichnis enthält. In unserem Fall ist bekannt, dass der letzte Commit der Merge war und im Commit vorher wurde das Verzeichnis gelöscht. Also ist der zu referenzierende Commit der dritte in der Historie, oder @HEAD~2@. Man könnte den Commit auch mit dem Branch-Namen referenzieren (@test~2@) oder sogar auf den SHA der Löschung zurück gehen (@f46666d^@).
 
-In any case, if you try to checkout a directory from a revision where it doesn't exist, you'll get this nice message:
+Wenn versucht wird, ein Verzeichnis aus einer Revision herauszuholen, das dort nicht existiert, kommt in jedem Fall diese nette Nachricht:
 
 <pre>
 $ git checkout test~1 -- bin/
 error: pathspec 'bin' did not match any file(s) known to git.
 </pre>
 
-So, let's check out the correct revision and finally get our directory back where it belongs:
+Wird die richtige Revision verwendet, kommt auch das Verzeichnis zurück, wo es hingehört:
 
 p=. !/images/checkout3.png!
 
-Great, now we're back in business. From here you can add or commit the file as needed.
+Großartig, nun sind wir wieder im Geschäft. Von hier kann man Dateien oder das Verzeichnis wie gewünscht hinzufügen und einchecken.
 
-If you're in this situation you might want to consider reverting the commit, which could restore the files that were deleted as well. However, this isn't always possible and may not be the best way to pull the directory you're missing back out of history.
+In dieser Situation kommt eventuell auch das Zurückrollen (Revert) das Commits in Frage, das ebenso gelöschte Dateien wiederherstellt. Das ist jedoch nicht immer möglich und muss nicht der beste Weg sein, ein vermisstes Verzeichnis aus der Historie zurückzuholen.
